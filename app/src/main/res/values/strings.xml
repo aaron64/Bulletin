@@ -3,11 +3,9 @@
 
     <string name="icon_thumbtack">&#xf08d;</string>
 
-    <string name="api_address">http://70.187.95.98:8080</string>
-    <string name="api_get_posts">/get_posts/</string>
-    <string name="api_post">/post/</string>
-    <string name="api_get_name">/api/boar/</string>
+    <string name="socket_api_address">http://70.187.95.98:4200</string>
+    <string name="api_address">http://70.187.95.98:8080/</string>
+    <string name="api_get_messages">api/message/</string>
 
-    <string name="main_name_board_hint">Enter board name here</string>
     <string name="board_edit_post_hint">New Post...</string>
 </resources>

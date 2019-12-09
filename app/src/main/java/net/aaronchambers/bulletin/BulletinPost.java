@@ -21,7 +21,7 @@ public class BulletinPost {
     public void setDate(String d) {
         this.date = d;
 
-        DateFormat inputFormat = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z");
+        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX");
 
         DateFormat dateFormat = new SimpleDateFormat("MM-dd-yy");
         DateFormat timeFormat = new SimpleDateFormat("hh:mm a");
@@ -34,9 +34,7 @@ public class BulletinPost {
         }
 
         Date recent = new Date(System.currentTimeMillis() - (24 * 60 * 60 * 1000));
-
-        Date now = new Date();
-
+        
         if(dateInput.after(recent)) {
             this.date = timeFormat.format(dateInput);
         } else {

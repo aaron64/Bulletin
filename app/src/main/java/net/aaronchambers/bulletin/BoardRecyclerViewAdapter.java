@@ -30,7 +30,7 @@ public class BoardRecyclerViewAdapter extends RecyclerView.Adapter<BoardRecycler
             try {
                 for (int i = 0; i < data.length(); i++) {
                     JSONObject item = data.getJSONObject(i);
-                    BulletinPost p = new BulletinPost(item.getString("text"), item.getString("updated"));
+                    BulletinPost p = new BulletinPost(item.getString("message"), item.getString("date"));
                     posts.add(p);
                 }
             } catch(JSONException e) {

@@ -1,6 +1,7 @@
 package net.aaronchambers.bulletin.BulletinAPIUtil;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -14,71 +15,19 @@ import net.aaronchambers.bulletin.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
+
+import java.net.NetworkInterface;
+import java.util.Collections;
+import java.util.List;
 
 
 public class RequestUtil {
 
-    public static void getBulletinName(Context context, final BulletinNameCallback callback) {
+    public static void getPosts(Context context, final BulletinPostsCallback callback) {
         String macAddress = NetworkUtil.getMacAddress(context);
-        long macInt = parseMacAddress(macAddress);
 
         RequestQueue queue = Volley.newRequestQueue(context);
-        String url = context.getResources().getString(R.string.api_address) + context.getResources().getString(R.string.api_get_name) + macInt;
-
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject obj = new JSONObject(response);
-                            callback.onSuccess(obj.getString("name"));
-                        } catch (JSONException e) {
-                            // TODO:
-                            callback.onSuccess("Error parsing JSON");
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // TODO: add error
-                        callback.onSuccess(null);
-                    }
-        });
-        queue.add(stringRequest);
-    }
-
-    public static void post(Context context, String text, final BulletinPostCallback callback) {
-        String macAddress = NetworkUtil.getMacAddress(context);
-        long macInt = parseMacAddress(macAddress);
-
-        RequestQueue queue = Volley.newRequestQueue(context);
-        String url = context.getResources().getString(R.string.api_address) + context.getResources().getString(R.string.api_post) + macInt + "/" + text;
-
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        callback.onSuccess("success");
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // TODO: add error
-                        callback.onSuccess("ERROR");
-                    }
-                });
-        queue.add(stringRequest);
-    }
-
-    public static void getBulletinPosts(Context context, final BulletinPostsCallback callback) {
-        String macAddress = NetworkUtil.getMacAddress(context);
-        long macInt = parseMacAddress(macAddress);
-
-        RequestQueue queue = Volley.newRequestQueue(context);
-        String url = context.getResources().getString(R.string.api_address) + context.getResources().getString(R.string.api_get_posts) + macInt;
+        String url = context.getResources().getString(R.string.api_address) + context.getResources().getString(R.string.api_get_messages) + "FF:FF:FF:FF";
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
