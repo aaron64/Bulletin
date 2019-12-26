@@ -5,6 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.util.Log;
 
 public class NetworkUtil {
 
@@ -27,9 +28,10 @@ public class NetworkUtil {
 
         if (wifiManager != null)
             wifiInfo = wifiManager.getConnectionInfo();
-
+        Log.i("SSID", wifiInfo.getSSID());
         if (wifiInfo != null)
             return wifiInfo.getSSID();
+
 
         return "ERROR";
     }

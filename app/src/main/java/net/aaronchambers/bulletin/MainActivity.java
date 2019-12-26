@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
 
     TextView mainTextIcon;
     TextView mainTextLabel;
-    TextView mainTextSubLabel;
     Button mainBtnConnect;
     EditText mainEditName;
 
@@ -44,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
         mainTextIcon = findViewById(R.id.main_text_icon);
         mainTextLabel = findViewById(R.id.main_text_label);
-        mainTextSubLabel = findViewById(R.id.main_text_sublabel);
         mainBtnConnect = findViewById(R.id.main_btn_connect);
         mainEditName = findViewById(R.id.main_edit_name);
 
@@ -63,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), BulletinBoardActivity.class);
-                //intent.putExtra(EXTRA_MESSAGE, ssid);
                 startActivity(intent);
             }
         });
@@ -97,7 +94,6 @@ public class MainActivity extends AppCompatActivity {
         boardExists = true;
 
         mainTextLabel.setText("Connect to " + ssid);
-        mainTextSubLabel.setText("(" + ssid.replace("\"", "") + ")");
 
         mainBtnConnect.setText("Enter Board");
         mainBtnConnect.setEnabled(true);
